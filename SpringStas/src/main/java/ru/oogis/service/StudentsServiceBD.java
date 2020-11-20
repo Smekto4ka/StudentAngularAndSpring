@@ -101,13 +101,15 @@ public class StudentsServiceBD implements StudentService {
     }
 
     @Override
-    public void updateStudent(Student newStudent) {
-        studentsRepository.findById(newStudent.getStudentId()).ifPresent(student -> {
-            newStudent.setSubjectBinderMap(student.getSubjectBinderMap());
-            studentsRepository.save(newStudent);
-        });
-
-
+    public boolean updateStudent(Student newStudent) {
+        if (studentsRepository.existsById(newStudent.getStudentId())) {
+            studentsRepository.findById(newStudent.getStudentId()).ifPresent(student -> {
+                newStudent.setSubjectBinderMap(student.getSubjectBinderMap());
+                studentsRepository.save(newStudent);
+            });
+            return true;
+        }
+        return false;
     }
 
     private void updateSubjectBinder(SubjectBinder subjectBinder) {

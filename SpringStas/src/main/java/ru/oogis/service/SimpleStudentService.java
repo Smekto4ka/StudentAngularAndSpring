@@ -78,8 +78,9 @@ public class SimpleStudentService implements StudentService {
     }
 
     @Override
-    public void updateStudent(Student student) {
+    public boolean updateStudent(Student student) {
         studentMap.get(student.getStudentId()).update(student);
+        return true;
     }
 
     @Override

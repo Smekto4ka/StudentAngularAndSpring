@@ -39,7 +39,7 @@ public interface StudentService {
 
     boolean deleteStudentById(long id);
 
-    void updateStudent(Student student);
+    boolean updateStudent(Student student);
 
 
 }

@@ -2,9 +2,9 @@ package ru.oogis.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import ru.oogis.model.Student;
 import ru.oogis.service.StudentService;
 
@@ -25,6 +25,12 @@ public class RestStudentController {
     @GetMapping()
     public List<Student> getIdStudent() {
         return studentService.getStudents();
+    }
+
+    @PutMapping()
+    public ResponseEntity<?> updateStudent(@RequestBody Student student) {
+        return studentService.updateStudent(student) ? new ResponseEntity<>(HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
 
     }
 }
