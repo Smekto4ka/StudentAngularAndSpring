@@ -22,6 +22,30 @@ public class SubjectBinder {
     public SubjectBinder() {
     }
 
+    public long getBinderId() {
+        return binderId;
+    }
+
+    public void setBinderId(long binderId) {
+        this.binderId = binderId;
+    }
+
+    public List<Marks> getMarksList() {
+        return marksList;
+    }
+
+    public void setMarksList(List<Marks> marksList) {
+        this.marksList = marksList;
+    }
+
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public void setSubject(Subject subject) {
+        this.subject = subject;
+    }
+
     public SubjectBinder(Subject subject) {
         this.subject = subject;
     }
